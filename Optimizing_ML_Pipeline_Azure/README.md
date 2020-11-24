@@ -6,19 +6,19 @@ This project is part of the Udacity Azure ML Nanodegree its the first project in
 
 In this project, we manufacture and advance an Azure ML pipeline utilizing the Python SDK and a gave Scikit-learn model. 
 
-The hyper-boundaries of the Scikit-learn model will be tuned utilizing Azure HyperDrive functionality.This model is then contrasted with an Azure AutoML run
+The hyper-boundaries of the Scikit-learn model will be tuned utilizing Azure HyperDrive functionality.This model is then contrasted with an Azure AutoML run and then we compare performance of both of the methods using different metrics. 
 
 ## Summary
 
 - In this problem the dataset contains data about the financial and personal details of the customers of a Portugese bank. We seek to predict if the customer will subscribe to bank term deposit or not. <br>
-- First , a Scikit-learn based LogisticRegression model is defined and used and the hyperparameters of the model are tuned using Azure HyperDrive functionality. <br>
-- Then, the same dataset is provided to Azure AutoML to try and find the best model using its functionality. <br>
-- Out of all the models, the best performing model was a Soft Voting Ensemble found using AutoML. It uses XGBoost Classifier with a standard scaler wrapper.
+- First , a Scikit-learn based LogisticRegression model is trained using cleaned data set and then we tune hyperparameter of it using azure hyper drive  <br>
+-At that point, the equivalent dataset is given to Azure AutoML to attempt to locate the best model utilizing its usefulness. <br>
+- We came to know that Soft Voting Ensemble was the best performing model out of all the models found using AutoML.
 
 ## Scikit-learn Pipeline
 
 ### Pipeline Architecture
-- In the Pipeline, first the dataset is retrieved from the given url using AzureDataFactory class. <br>
+- In the Pipeline, first the dataset is recovered from the given url utilizing AzureDataFactory class in the train.py file. <br>
 - Then the data is cleaned using clean_data method in which some preprocessing steps were performed like converting categorical variable to binary encoding, one hot encoding,etc and then the dataset is split in ratio of 70:30 (train/test) for training and testing and sklearn's LogisticRegression Class is used to define Logistic Regression model. <br>
 - A SKLearn estimator which is used for training in Scikit-learn experiments is used here and it takes training scripts and performs the training on the compute. This estimator will later be passed to the HyperDrive Config script.
 - Then a HyperDrive Config is created using the estimator, parameter sampler and a policy and the HyperDrive run is executed in the experiment.
